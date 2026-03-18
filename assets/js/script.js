@@ -154,21 +154,56 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ===== CONTACT FORM =====
+// ===== CONTACT FORM — FORMSPREE AJAX =====
 const contactForm = document.getElementById('contactForm');
+const formStatus  = document.getElementById('formStatus');
+const submitBtn   = document.getElementById('submitBtn');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = contactForm.querySelector('.btn-primary');
-    const original = btn.innerHTML;
-    btn.innerHTML = '<i class="fa-solid fa-check"></i> Pesan Terkirim!';
-    btn.style.background = '#16a34a';
-    setTimeout(() => {
-      btn.innerHTML = original;
-      btn.style.background = '';
-      contactForm.reset();
-    }, 3000);
+
+    // Loading state
+    submitBtn.classList.add('btn-loading');
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+    formStatus.style.display = 'none';
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Sukses
+        formStatus.className  = 'form-status success';
+        formStatus.innerHTML  = '<i class="fa-solid fa-circle-check"></i> Pesan berhasil terkirim! Saya akan segera membalas.';
+        formStatus.style.display = 'flex';
+        contactForm.reset();
+      } else {
+        // Error dari Formspree
+        const data = await response.json();
+        const msg  = data.errors?.map(e => e.message).join(', ') || 'Terjadi kesalahan. Coba lagi.';
+        formStatus.className  = 'form-status error';
+        formStatus.innerHTML  = `<i class="fa-solid fa-circle-xmark"></i> ${msg}`;
+        formStatus.style.display = 'flex';
+      }
+    } catch (err) {
+      // Network error
+      formStatus.className  = 'form-status error';
+      formStatus.innerHTML  = '<i class="fa-solid fa-circle-xmark"></i> Gagal mengirim. Periksa koneksi internet kamu.';
+      formStatus.style.display = 'flex';
+    } finally {
+      // Kembalikan tombol
+      submitBtn.classList.remove('btn-loading');
+      submitBtn.innerHTML = 'Kirim Pesan <i class="fa-solid fa-paper-plane"></i>';
+
+      // Sembunyikan status setelah 6 detik
+      setTimeout(() => { formStatus.style.display = 'none'; }, 6000);
+    }
   });
 }
 

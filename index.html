@@ -176,7 +176,7 @@
               <i class="fa-solid fa-envelope card-icon"></i>
               <div>
                 <span class="card-label">Email</span>
-                <span class="card-value">rezzamaulana03@gmail.com</span>
+                <span class="card-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0476617e7e6569657168656a653437446369656d682a676b69">[email&#160;protected]</a></span>
               </div>
             </div>
           </div>
@@ -453,20 +453,51 @@
 
         <div class="contact-wrapper">
           <div class="contact-form-wrap reveal-left">
-            <form id="contactForm">
+            <form id="contactForm" action="https://formspree.io/f/xbdzqrrr" method="POST">
+
+              <!-- Honeypot anti-spam (disembunyikan dari user) -->
+              <input type="text" name="_gotcha" style="display:none" />
+
+              <!-- Redirect setelah sukses (opsional) -->
+              <!-- <input type="hidden" name="_next" value="https://rezzamaulana.netlify.app/thanks.html" /> -->
+
               <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" class="form-input" placeholder="Masukkan nama Anda" required />
+                <label for="nama">Nama Lengkap</label>
+                <input
+                  type="text"
+                  id="nama"
+                  name="nama"
+                  class="form-input"
+                  placeholder="Masukkan nama Anda"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label>Email</label>
-                <input type="email" class="form-input" placeholder="email@contoh.com" required />
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="email@contoh.com"
+                  required
+                />
               </div>
               <div class="form-group">
-                <label>Pesan</label>
-                <textarea class="form-textarea" placeholder="Tulis pesan Anda..." required></textarea>
+                <label for="pesan">Pesan</label>
+                <textarea
+                  id="pesan"
+                  name="pesan"
+                  class="form-textarea"
+                  placeholder="Tulis pesan Anda..."
+                  required
+                ></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-full">
+
+              <!-- Status pesan -->
+              <div id="formStatus" class="form-status" style="display:none"></div>
+
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-full">
                 Kirim Pesan <i class="fa-solid fa-paper-plane"></i>
               </button>
             </form>
@@ -477,8 +508,8 @@
               <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
               <div class="contact-card-body">
                 <h4>Email</h4>
-                <p>rezzamaulana03@gmail.com</p>
-                <a href="mailto:rezzamaulana03@gmail.com" class="contact-link">Kirim Email <i class="fa-solid fa-arrow-right"></i></a>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2a0b7a8a8b3bfb3a7beb3bcb3e2e192b5bfb3bbbefcb1bdbf">[email&#160;protected]</a></p>
+                <a href="/cdn-cgi/l/email-protection#b7c5d2cdcdd6dad6c2dbd6d9d68784f7d0dad6dedb99d4d8da" class="contact-link">Kirim Email <i class="fa-solid fa-arrow-right"></i></a>
               </div>
             </div>
             <div class="contact-card">
@@ -533,23 +564,8 @@
           <div class="footer-contact-info">
             <h4>Kontak</h4>
             <ul>
-              <li><i class="fa-solid fa-envelope"></i> rezzamaulana03@gmail.com</li>
+              <li><i class="fa-solid fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9eecfbe4e4fff3ffebf2fff0ffaeaddef9f3fff7f2b0fdf1f3">[email&#160;protected]</a></li>
               <li><i class="fa-solid fa-location-dot"></i> Jakarta, Indonesia</li>
             </ul>
           </div>
         </div>
-
-        <div class="footer-bottom">
-          <p>© 2025 Rezza Maulana. All rights reserved.</p>
-          <p>Crafted with <i class="fa-solid fa-heart"></i> using HTML, CSS &amp; JS</p>
-        </div>
-      </div>
-    </footer>
-
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <script src="assets/js/script.js"></script>
-  </body>
-</html>
