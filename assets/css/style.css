@@ -1079,13 +1079,24 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .form-group label {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-2);
   margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.char-counter {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-3);
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .form-input,

@@ -456,10 +456,7 @@
             <form id="contactForm" action="https://formspree.io/f/xbdzqrrr" method="POST">
 
               <!-- Honeypot anti-spam (disembunyikan dari user) -->
-              <input type="text" name="_gotcha" style="display:none" />
-
-              <!-- Redirect setelah sukses (opsional) -->
-              <!-- <input type="hidden" name="_next" value="https://rezzamaulana.netlify.app/thanks.html" /> -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
               <div class="form-group">
                 <label for="nama">Nama Lengkap</label>
@@ -469,6 +466,8 @@
                   name="nama"
                   class="form-input"
                   placeholder="Masukkan nama Anda"
+                  minlength="2"
+                  maxlength="100"
                   required
                 />
               </div>
@@ -480,16 +479,22 @@
                   name="email"
                   class="form-input"
                   placeholder="email@contoh.com"
+                  maxlength="150"
                   required
                 />
               </div>
               <div class="form-group">
-                <label for="pesan">Pesan</label>
+                <label for="pesan">
+                  Pesan
+                  <span id="charCounter" class="char-counter">0/2000</span>
+                </label>
                 <textarea
                   id="pesan"
                   name="pesan"
                   class="form-textarea"
-                  placeholder="Tulis pesan Anda..."
+                  placeholder="Tulis pesan Anda... (min. 10 karakter)"
+                  minlength="10"
+                  maxlength="2000"
                   required
                 ></textarea>
               </div>
@@ -532,7 +537,6 @@
         </div>
       </div>
     </section>
-    <script src="assets/js/script.js"></script>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
