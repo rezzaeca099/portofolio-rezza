@@ -1460,52 +1460,52 @@ button { border: none; cursor: pointer; font-family: inherit; }
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--bg-secondary, #fff);
-  border: 2px solid var(--text-muted, #999);
+  background: var(--surface);
+  border: 2px solid var(--text-3);
   flex-shrink: 0;
   margin-top: 6px;
 }
 
 .exp-dot-active {
-  border-color: var(--accent, #6c5ce7);
-  background: var(--accent, #6c5ce7);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, #6c5ce7) 20%, transparent),
-              0 0 16px color-mix(in srgb, var(--accent, #6c5ce7) 60%, transparent);
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-light), 0 0 16px var(--accent-glow);
   animation: exp-pulse 2s ease-in-out infinite;
 }
 
 @keyframes exp-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, #6c5ce7) 20%, transparent), 0 0 16px color-mix(in srgb, var(--accent, #6c5ce7) 60%, transparent); }
-  50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent, #6c5ce7) 10%, transparent), 0 0 22px color-mix(in srgb, var(--accent, #6c5ce7) 80%, transparent); }
+  0%, 100% { box-shadow: 0 0 0 4px var(--accent-light), 0 0 16px var(--accent-glow); }
+  50% { box-shadow: 0 0 0 7px var(--accent-light), 0 0 22px var(--accent-glow); }
 }
 
 .exp-line {
   width: 2px;
   flex: 1;
   margin-top: 6px;
-  background: linear-gradient(to bottom, var(--text-muted, #999), transparent);
+  background: linear-gradient(to bottom, var(--border-strong), transparent);
 }
 
 .exp-card {
-  background: var(--bg-secondary, #fff);
-  border: 1px solid var(--border-color, #eee);
-  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 32px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .exp-card:hover {
   transform: translateY(-4px);
-  border-color: var(--accent, #6c5ce7);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
 }
 
 .exp-period {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--accent, #6c5ce7);
+  color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 14px;
 }
@@ -1520,12 +1520,13 @@ button { border: none; cursor: pointer; font-family: inherit; }
 .exp-icon {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--accent, #6c5ce7) 12%, transparent);
-  color: var(--accent, #6c5ce7);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-glow);
+  color: var(--accent);
   font-size: 1.1rem;
   flex-shrink: 0;
 }
@@ -1533,12 +1534,14 @@ button { border: none; cursor: pointer; font-family: inherit; }
 .exp-head h3 {
   font-size: 1.15rem;
   font-weight: 700;
+  color: var(--text);
   margin: 0 0 2px;
 }
 
 .exp-role {
   font-size: 0.9rem;
-  color: var(--text-muted, #777);
+  color: var(--accent);
+  font-weight: 500;
   margin: 0;
 }
 
@@ -1550,15 +1553,16 @@ button { border: none; cursor: pointer; font-family: inherit; }
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent, #6c5ce7) 14%, transparent);
-  color: var(--accent, #6c5ce7);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-glow);
+  color: var(--accent);
   white-space: nowrap;
 }
 
 .exp-desc {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--text-secondary, #555);
+  color: var(--text-2);
   margin-bottom: 18px;
 }
 
@@ -1569,12 +1573,13 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .exp-tags span {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--mono);
   font-size: 0.75rem;
   padding: 5px 12px;
   border-radius: 999px;
-  background: var(--bg-tertiary, #f4f4f6);
-  color: var(--text-secondary, #555);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-3);
 }
 
 @media (max-width: 600px) {
