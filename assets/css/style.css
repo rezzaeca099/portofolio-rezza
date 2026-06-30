@@ -1491,23 +1491,68 @@ button { border: none; cursor: pointer; font-family: inherit; }
   border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
   transition: all var(--transition);
   box-shadow: var(--shadow-sm);
 }
 
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.exp-card:hover::before { transform: scaleX(1); }
+
 .exp-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: var(--accent);
   box-shadow: var(--shadow-lg);
 }
 
+.exp-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
 .exp-period {
   font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
+  font-size: 0.75rem;
   color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-glow);
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.03em;
+}
+
+.exp-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  color: var(--success);
+}
+
+.exp-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse 2s infinite;
 }
 
 .exp-head {
@@ -1518,17 +1563,22 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .exp-icon {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-light);
+  background: linear-gradient(135deg, var(--accent-light), var(--accent-glow));
   border: 1px solid var(--accent-glow);
   color: var(--accent);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.exp-card:hover .exp-icon {
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .exp-head h3 {
@@ -1539,28 +1589,14 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .exp-role {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
 }
 
-.exp-status {
-  margin-left: auto;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--accent-light);
-  border: 1px solid var(--accent-glow);
-  color: var(--accent);
-  white-space: nowrap;
-}
-
 .exp-desc {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   line-height: 1.7;
   color: var(--text-2);
   margin-bottom: 18px;
@@ -1573,13 +1609,28 @@ button { border: none; cursor: pointer; font-family: inherit; }
 }
 
 .exp-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   padding: 5px 12px;
-  border-radius: 999px;
+  border-radius: 50px;
   background: var(--surface-2);
   border: 1px solid var(--border);
-  color: var(--text-3);
+  color: var(--text-2);
+  transition: all var(--transition);
+}
+
+.exp-tags span:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-glow);
+  color: var(--accent);
+}
+
+.exp-tags span i {
+  color: var(--accent);
+  font-size: 0.7rem;
 }
 
 @media (max-width: 600px) {
