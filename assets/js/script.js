@@ -70,9 +70,9 @@ mobileLinks.forEach(link => {
 // ===== TYPING ANIMATION =====
 const roles = [
   'Web Developer',
-  'UI/UX Designer',
+  'Quality Assurance Tester',
   'Frontend Developer',
-  'PHP & Laravel Dev',
+  'PHP & Laravel Developer',
 ];
 
 let roleIdx = 0;
